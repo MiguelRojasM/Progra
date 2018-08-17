@@ -1,0 +1,35 @@
+// equijde.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include <math.h>
+
+using namespace std;
+
+void main()
+{	
+	float area,b,h;
+	cout<<"ingresar base: ";
+	cin>>b;
+	cout<<"ingresar altura: ";
+	cin>>h;
+    area=(b*h)/2;
+	cout<<"la area del triangulo es: "<<area;
+  	cin>>area;
+
+	getch();
+}
+
+/////////////////////////////////////////////////////
+Proceso ATriangulo
+	Escribir 'insertar base: '
+	Leer b
+	Escribir 'insertar altura: '
+	Leer h
+	Escribir 'area del triangulo'
+		area<- (b*h)/2
+	Escribir area
+FinProceso
+
