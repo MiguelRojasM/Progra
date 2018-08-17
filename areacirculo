@@ -1,0 +1,32 @@
+// equijde.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include <math.h>
+
+
+using namespace std;
+
+void main()
+{	
+	float area,r;
+	cout<<"ingresar radio: ";
+	cin>>r;
+	
+    area=(3.141692*r*r);
+	cout<<"la area del circulo es: "<<area;
+  	cin>>area;
+
+	getch();
+}
+
+////////////////////////////////////////////////////
+Proceso ACirculo
+	Escribir 'insertar radio: '
+	Leer r
+		Escribir 'area del circulo'
+		area<- (3.141692*r*r)
+	Escribir area
+FinProceso
