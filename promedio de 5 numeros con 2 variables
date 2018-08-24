@@ -1,0 +1,55 @@
+// acm1pt.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+
+using namespace std;
+
+void main()
+{	
+	float a,p=0;
+	cout<<"ingresar primer valor: ";
+	cin>>a;
+		p=p+a;
+	cout<<"ingresar segundo valor: ";
+	cin>>a;
+	p=p+a;
+	cout<<"ingresar tercer valor: ";
+	cin>>a;
+	p=p+a;
+	cout<<"ingresar cuarto valor: ";
+	cin>>a;
+	p=p+a;
+	cout<<"ingresar quinto valor: ";
+	cin>>a;
+	p=p+a;
+	p=p/5;
+	cout<<"el promedio de los cinco valores es: "<<p;
+	
+	
+	getch ();
+}
+/////////////////////////////////////////////////////////////////
+Proceso sin_titulo
+	Escribir "ingresar primer valor"
+	Leer a
+	p<-p+a
+	Escribir 'ingresar segundo valor'
+	Leer a
+	p<-p+a
+	Escribir "ingresar tercer valor"
+	Leer a
+	p<-p+a
+	Escribir "ingresar cuarto valor"
+	Leer a
+	p<-p+a
+	Escribir "ingresar quinto valor"
+	Leer a
+	p<-p+a
+	p<-p/5
+	Escribir "el promedio entre los 5 valores es: ",p
+FinProceso
+
