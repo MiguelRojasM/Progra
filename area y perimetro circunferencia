@@ -1,0 +1,31 @@
+// acm1pt.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+
+using namespace std;
+
+void main()
+{	
+	float r,pi=3.141592,p,a;
+	cout<<"el radio es: ";
+	cin>>r;
+	p=2*pi*r;
+	a=pi*r*r;
+	cout<<"el perimetro de la circunferencia es: "<<p<<endl;
+	cout<<"el area de la circunfernecia es: "<<a<<endl;
+	getch ();
+}
+/////////////////////////////////////////////////////////////////////////////////////////////
+Proceso sin_titulo
+	Escribir 'el radio es r: '
+	Leer r
+	a<-2*3.141592*r
+	p<-r*r*3.141592
+	Escribir 'el valor del area es: ',a
+	Escribir 'el valor del perimetero es: ',p
+FinProceso
+
