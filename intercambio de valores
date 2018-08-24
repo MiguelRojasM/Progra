@@ -1,0 +1,38 @@
+// acm1pt.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+
+using namespace std;
+
+void main()
+{	
+	int A,B,C;
+	cout<<"A: ";
+	cin>>A;
+	cout<<"B: ";
+	cin>>B;
+	C=A;
+    A=B;
+	B=C;
+	cout<<"A: "<<A<<endl;
+	cout<<"B: "<<B<<endl;
+	getch ();
+}
+
+//////////////////////////////////////////////////////////////////////////////
+Proceso sin_titulo
+	Escribir "A: "
+	Leer A
+	Escribir "B: "
+	Leer B
+	aux<-A
+	A<-B
+	B<-aux
+	Escribir "el nuevo valor de A es: ",A
+	Escribir "el nuevo valor de B es: ",B
+FinProceso
+
