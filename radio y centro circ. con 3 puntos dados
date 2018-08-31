@@ -1,0 +1,53 @@
+// Programa 1.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+
+using namespace std;
+
+void main()
+{
+	float x1,y1,x2,y2,x3,y3,a1,a2,a3,P,C,c,D,d,E,e,h,k,m,n,o,s,A;
+	double r;
+		cout<<"colocar coordenadas del primer punto"<<endl;
+		cout<<"x1: ";
+		cin>>x1;
+		cout<<"y1: ";
+		cin>>y1;
+		cout<<"colocar coordenadas del segundo punto"<<endl;
+		cout<<"x2: ";
+		cin>>x2;
+		cout<<"y2 :";
+		cin>>y2;
+		cout<<"colocar coordenadas del tercer punto"<<endl;
+		cout<<"x3: ";
+		cin>>x3;
+		cout<<"y3: ";
+		cin>>y3;
+		a1=-(pow(x1,2)+pow(y1,2));
+		a2=-(pow(x2,2)+pow(y2,2));
+		a3=-(pow(x3,2)+pow(y3,2));
+		P=(x1*y2)+(x2*y3)+(x3*y1)-(x3*y2)-(x1*y3)-(x2*y1);
+		c=(a1*y2)+(a2*y3)+(a3*y1)-(a3*y2)-(a2*y3)-(a1*y1);
+		d=(x1*a2)+(x2*a3)+(x3*a1)-(x3*a2)-(x1*a3)-(x2*a1);
+		e=(x1*y2*a3)+(x2*y3*a1)+(x3*y1+a2)-(x3*y2*a1)-(x1*y3*a2)-(x2*y1*a3);
+		C=c/P;
+		D=d/P;
+		E=e/P;
+		h=-(C/2);
+		k=-(D/2);
+		m=sqrt(pow(x3-x2,2)+pow(y3-y2,2));
+		n=sqrt(pow(x3-x1,2)+pow(y3-y1,2));
+		o=sqrt(pow(x2-x1,2)+pow(y2-y1,2));
+		s=(m+n+o)/2;
+		A=sqrt(s*(s-m)*(s-n)*(s-o));
+		r=(m*n*o)/(4*A);
+		cout<<"las cordenadas del centro C(h,k) son"<<endl;
+		cout<<"h: "<<h<<endl;
+		cout<<"k: "<<k<<endl;
+		cout<<"el radio de la circunferencia es: "<<r;
+		getch();
+}
