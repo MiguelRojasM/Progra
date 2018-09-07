@@ -1,0 +1,36 @@
+// 3.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+void main()
+{
+	float min, salariobruto, salarioneto;
+	int n,k;
+	k=1;
+	min=2060;
+	cout<<"ingresar el el numero de empleados: ";
+	cin>>n;
+	while (k<=n)
+	{	
+		cout<<"ingresar el salario bruto: ";
+		cin>>salariobruto;
+		if (salariobruto>=4*min)
+		{	
+			salarioneto=salariobruto-0.13*salariobruto;
+			cout<<"el salario neto es: "<<salarioneto<<endl;
+		}			
+		else 
+		{	
+			salarioneto=salariobruto-0.121*salariobruto;
+			cout<<"el salario neto es: "<<salarioneto<<endl;
+		}
+		k=k+1;
+	}
+	getch();
+}
+/////////////////////////////////////////////////////////////////////////////
