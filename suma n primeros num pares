@@ -1,0 +1,19 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+
+using namespace std;
+
+void main()
+{
+	float suma=0,n,k=1,num=0;
+	cout<<"introducir la cantidad n de numeros a sumar: ";
+	cin>>n;
+	while(k<=n){
+		num=num+2;
+		suma=suma+num;
+		k=k+1;}
+	cout<<"la suma de los primeros n numeros pares es: "<<suma<<endl;
+	getch();
+}
