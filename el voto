@@ -1,0 +1,47 @@
+// andvadv.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+
+using namespace std;
+
+void main()
+{
+	int edad,p,ant,nac,tip,k=0;
+	cout<<"introducir cantidad de personas: ";
+	cin>>p;
+	while (k<=p){
+		cout<<"introducir edad: ";
+		cin>>edad;
+		if (edad>=18){
+			cout<<"antecedentes penales"<<endl;
+			cout<<"1. Si"<<endl;
+			cout<<"0. No"<<endl;
+			cin>>ant;
+			if (ant==0){
+				cout<<"Nacionalidad"<<endl;
+				cout<<"1. Nacional"<<endl;
+				cout<<"2. Extranjero"<<endl;
+				cin>>nac;
+				if(nac==2){
+					cout<<"Eleccion"<<endl;
+					cout<<"1. Municipal"<<endl;
+					cout<<"2. Presidencial"<<endl;
+					cin>>tip;
+					if (tip==1){
+						cout<<"si puede votar"<<endl;}
+					else{
+						cout<<"no puede votar"<<endl;}
+				else{
+					cout<<"si puede votar"<<endl;}}
+			else{
+				cout<<"no puede votar"<<endl;}}
+		else{
+			cout<<"no puede votar"<<endl;}}
+		k=k+1;
+	}
+		getch();
+}
