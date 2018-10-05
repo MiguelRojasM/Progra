@@ -1,0 +1,41 @@
+// jkdhfkad.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+
+using namespace std;
+float funcion(int N, int X);
+float fact(int y);
+void main()
+{
+	double N,X, resp,poten,y,a,b;
+	cout<<"introducir N: ";
+	cin>>N;
+	cout<<"introducir X: ";
+	cin>>X;
+	resp=funcion(N,X);
+	cout<<"el resultado es: "<<resp<<endl;
+	getch();
+}
+float funcion(int N, int X)
+{	double resp=0,x=1,y=1,p=1,z=1,w=2;
+		while (z<=N){	
+		resp=resp+(pow(X,z)/fact(z))*pow(-1,w);
+		z=z+1;
+		w=w+1;}
+	return resp;
+}
+
+float fact(int N)
+{	double resp=1,x=1;
+	if (N==0)
+		resp=1;
+	else
+		while (x<=N){
+		resp=resp*x;
+		x=x+1;}
+	return resp;
+}
