@@ -1,0 +1,26 @@
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+
+using namespace std;
+float suma(int N);
+
+void main()
+{
+	int N, sum;
+	cout<<"introducir la cantidad de numeros a sumar: ";
+	cin>>N;
+	sum=suma(N);
+	cout<<"el valor de la suma es: "<<sum<<endl;
+	getch();
+}
+float suma(int N)
+{	double s=0,x=0,p=1;
+	while (x<=N){
+		s=s+x*pow(-1,p);
+		x=x+1;
+		p=p+1;}
+	return s;
+}
