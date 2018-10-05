@@ -1,0 +1,28 @@
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+
+using namespace std;
+float funcion(int N,int poten);
+
+void main()
+{
+	int N, resp,poten;
+	cout<<"introducir base: ";
+	cin>>N;
+	cout<<"introducir mayor potencia: ";
+	cin>>poten;
+	resp=funcion(N,poten);
+	cout<<"el resultado es: "<<resp<<endl;
+	getch();
+}
+float funcion(int N, int poten)
+{	double resp=0,x=1;
+	while (x<=poten){
+		resp=resp+pow(N,x);
+		x=x+1;}
+	return resp;
+}
+
