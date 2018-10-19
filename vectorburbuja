@@ -17,7 +17,7 @@ void main()
 	do{
 	cout<< "Ingrese el numero de elementos del vector: ";
 	cin>> n; 
-	}while((n>MAX)||(n<0));
+	}while((n>MAX)||(n<=0));
 	do{
 	cout<<"------MENU------"<<endl;
 	cout<<"1. Cargar"<<endl;
