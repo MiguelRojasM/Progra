@@ -1,0 +1,74 @@
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#define MAX 100
+
+using namespace std;
+
+void cargar(int vec[],int tam);
+void ordenar(int vec[],int tam);
+void mostrar(int vec[],int tam);
+
+
+void main()
+{
+	int n, vec[MAX],opcion;
+	do{
+	cout<< "Ingrese el numero de elementos del vector: ";
+	cin>> n; 
+	}while((n>MAX)||(n<0));
+	do{
+	cout<<"------MENU------"<<endl;
+	cout<<"1. Cargar"<<endl;
+	cout<<"2. Ordenar"<<endl;
+	cout<<"3. Mostrar"<<endl;
+	cout<<"4. Salir"<<endl;
+	cout<<"Opcion.- ";
+	cin>>opcion;
+	if (opcion==1)
+	cargar(vec,n);
+	if (opcion==2)
+	ordenar(vec,n);
+	if (opcion==3)
+	mostrar(vec,n);
+	if ((opcion<1)||(opcion>4))
+	cout<<"opcion invalida"<<endl;
+	}while(opcion!=4);
+	getch();
+}
+void cargar(int vec[],int tam)
+{
+	for(int i=0;i<tam;i++)
+	{
+		
+		cout<< "Ingrese el valor para vec["<< i << "]=";
+		cin>> vec[i];
+	}
+}
+void ordenar(int vec[],int tam)
+{
+	int aux;
+	for (int i=0;i<tam-1;i++)
+	{
+		for(int j=i+1;j<tam;j++)
+		{
+			if(vec[i]>vec[j]) 
+			{
+				aux=vec[j];
+				vec[j]=vec[i];
+				vec[i]=aux;
+			}
+		}
+	}
+}
+
+void mostrar(int vec[],int tam)
+{   
+	for(int i=0;i<tam;i++)
+	{
+		cout<< "vec["<< i << "]=";
+		cout<< vec[i]<<endl;
+	}
+}
+
