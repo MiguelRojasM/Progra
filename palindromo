@@ -16,7 +16,7 @@ void main()
 	int resul;
 	cout<<"introducir frase a analizar: "<<endl;
 	cin>>frase;
-	resul=palindromo(frase);
+	resul=palindromo(frase,tam);
 	if(resul==0)
 		cout<<"no es palindromo/capicua"<<endl;
 	if(resul==1)
