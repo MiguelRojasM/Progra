@@ -1,3 +1,6 @@
+// akjefha.cpp : Defines the entry point for the console application.
+//
+
 #include "stdafx.h"
 #include <iostream>
 #include "conio.h"
@@ -6,29 +9,39 @@
 
 using namespace std;
 
-int palindromo(string frase,int tam);
+
 void main()
 {
-	int tam;
-	cout<<"introducir la cantidad de espacios que ocupa la frase: ";
-	cin>>tam;
-	string frase;
-	int resul;
-	cout<<"introducir frase a analizar: "<<endl;
-	cin>>frase;
-	resul=palindromo(frase,tam);
-	if(resul==0)
-		cout<<"no es palindromo/capicua"<<endl;
-	if(resul==1)
-		cout<<"es palindromo/capicua"<<endl;
+	char cad[MAX], cadaux[MAX];
+	int n;
+	char aux;
+	cout<<"Ingrese Palabra/Texto: "<<endl<<endl;
+	cin.getline(cad,MAX);
+	cout<<endl<<cad<<endl<<endl;
+	n=strlen(cad);//tamaño de cadena
+	for(int i=0;i<n;i++){
+		if(cad[i]==' '||cad[i]==','){
+			for(int j=i;j<strlen(cad);j++)
+				cad[j]=cad[j+1];
+			i--;
+			n--;
+		}
+	}
+	strcpy(cadaux,cad);//copiar de una cadena a otra
+	for(int i=0;i<strlen(cad)/2;i++)
+	{
+		aux=cad[i];
+		cad[i]=cad[strlen(cad)-1-i];
+		cad[strlen(cad)-1-i]=aux;
+	}
+	cout<<"La cadena original es: "<<cadaux<<endl<<endl;
+	cout<<"Lacadena invertida es: "<<cad<<endl<<endl;
+	cout<<"La cadena es... ";
+	if(strcmp(cadaux,cad)==0)
+		cout<<"Es palindromo"<<endl;
+	else
+		cout<<"No es palindromo"<<endl;
 	getch();
 }
-int palindromo(string frase,int tam)
-{
-	int y;
-	int x=1;
-	for(int i=0;i<tam;i++)
-		if(frase[i]!=frase[tam-1])
-			x=0;
-	return x;
-}
+
+	
