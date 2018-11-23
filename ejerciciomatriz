@@ -1,0 +1,120 @@
+// dffdf.cpp : Defines the entry point for the console application.
+//
+
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+#define MAXCOL 20
+#define MAXROW 20
+
+using namespace std;
+
+void cargar (int matrix[MAXROW][MAXCOL],int n, int m);
+void mostrar (int matrix[MAXROW][MAXCOL],int n, int m);
+int mayor (int matrix[MAXROW][MAXCOL],int n, int m);
+void clasificar_fila(int matrix[MAXROW][MAXCOL],int n, int m);
+int boole(int matrix[MAXROW][MAXCOL],int n,int m);
+void main()
+{
+  int n,m,opcion,x, matriz[MAXROW][MAXCOL];
+  do 
+  {
+	  cout<<"Ingrese el numero de filas: ";
+	  cin>>n;
+  } while ((n>MAXROW)|| (n<=0));
+  do 
+  {
+	  cout<<"Ingrese el numero de columnas: ";
+	  cin>>m;
+  } while ((m>MAXCOL)|| (m<=0));
+  do
+  {
+	  cout<<"-----MENU-----"<<endl;
+	  cout<<"1.Cargar"<<endl;
+	  cout<<"2.Mostrar"<<endl;
+	  cout<<"3.Mayor"<<endl;
+	  cout<<"4.Clasificar"<<endl;
+	  cout<<"5.Booleana"<<endl;
+	  cout<<"0.Salir"<<endl;
+	  cout<<"Opcion: ";
+	  cin>>opcion;
+	  if (opcion==1)
+		  cargar (matriz,n,m);
+	  if (opcion==2)
+		  mostrar (matriz,n,m);
+	  if (opcion==3){
+		  x=mayor(matriz,n,m);
+		  cout<<"El mayor valor de la matriz es: "<<x<<endl;}
+	  if(opcion==4){
+		  clasificar_fila(matriz,n,m);}
+	  if(opcion==5){
+		  boole(matriz,n,m);}
+  }while(opcion!=0);
+  getch();
+}
+
+void cargar(int matrix[MAXROW][MAXCOL],int n, int m)
+{cout<<"introducir elementos de matriz booleana"<<endl;
+int i, j;
+ 
+  for(i=0;i<n;i++)
+   for(j=0;j<m;j++)
+     {cout<<"MAT ["<<i<<"] ["<<j<<"]: ";
+      cin>>matrix[i][j];
+     }
+}
+
+void mostrar(int matrix[MAXROW][MAXCOL],int n, int m)
+{int i, j;
+ 
+  for(i=0;i<n;i++)
+   {for(j=0;j<m;j++)
+       cout<<"MAT ["<<i<<"] ["<<j<<"]: "<<matrix[i][j]<<"\t";   
+	cout<<endl;
+   }
+}
+
+int mayor (int matrix[MAXROW][MAXCOL],int n, int m)
+{int tmayor,i, j;
+ 
+tmayor= matrix[0][0];
+  for(i=0;i<n;i++)
+   for(j=0;j<m;j++)
+	{ if(tmayor<matrix[i][j])
+			tmayor=matrix[i][j];
+   
+     }
+return tmayor;
+}
+void clasificar_fila(int matrix[MAXROW][MAXCOL],int n, int m)
+{	double aux;
+	int i,j;
+	
+	for(i=0;i<n;i++)
+		for(j=0;j<m;j++)
+		{
+			
+			if(matrix[i][j]<matrix[i][j+1]){
+				aux=matrix[i][j];
+				matrix[i][j]=matrix[i][j+1];
+				matrix[i][j+1]=aux;
+			}
+		}
+}
+int boole(int matrix[MAXROW][MAXCOL],int n,int m)
+{	int k,l;
+	for(int i=0;i<n;i++)
+		for(int j=0;j<m;j++)
+			if( matrix[i][j]==1)
+			{
+				k=j;
+				l=i;
+				for (k=0;k<m;k++){
+					matrix[i][k]=1;}
+				for (l=0;l<n;l++){
+					matrix[l][j]=1;}
+				return 0;
+			}
+}
