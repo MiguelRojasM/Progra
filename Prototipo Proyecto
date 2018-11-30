@@ -1,0 +1,55 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+#define MAXCOL 20
+#define MAXROW 20
+
+using namespace std;
+void suma (float matrix[MAXROW][MAXCOL],int n,int m);
+void resta (float matrix[MAXROW][MAXCOL],int n,int m);
+void mul (float matrix[MAXROW][MAXCOL],int n,int m);
+void determinante (float matrix[MAXROW][MAXCOL],int n,int m);
+void cofactores (float matrix[MAXROW][MAXCOL],int n,int m);
+void adjunta (float matrix[MAXROW][MAXCOL],int n,int m);
+void cargar (float matrix[MAXROW][MAXCOL],int n, int m);
+void mostrar (float matrix[MAXROW][MAXCOL],int n, int m);
+void inversa (float matrix[MAXROW][MAXCOL],int n,int m);
+void transpuesta (float matrix[MAXROW][MAXCOL],int n,int m);
+void main()
+{
+  int n=3,m=3,opcion,x,y;
+  float matrix[MAXROW][MAXCOL],matriz2[MAXROW][MAXCOL];
+  do{
+	  cout<<"-----MENU-----"<<endl;
+	  cout<<"1.Suma"<<endl;
+	  cout<<"2.Resta"<<endl;
+	  cout<<"3.Multiplicacion"<<endl;
+	  cout<<"4.Determinante"<<endl;
+	  cout<<"5.Transpuesta"<<endl;
+	  cout<<"6.Cofactores"<<endl;
+	  cout<<"7.Adjunta"<<endl;
+	  cout<<"8.Inversa"<<endl;
+	  cout<<"0.Salir"<<endl;
+	  cout<<"¿Que desea aprender?"<<endl;
+	  cout<<"Opcion: ";
+	  cin>>opcion;
+	  if (opcion==1)
+		suma(matrix,n,m);
+	  if (opcion==2)
+		 resta(matrix,n,m);
+	  if (opcion==3)
+		  mul(matrix,n,m);
+	  if (opcion==4)
+		determinante(matrix,n,m);
+	  if (opcion==5)
+		transpuesta(matrix,n,m);
+	  if(opcion==6)
+		cofactores(matrix,n,m);
+	  if(opcion==7)
+		adjunta(matrix,n,m);
+	  if(opcion==8)
+		inversa(matrix,n,m);
+	 }while (opcion!=0);
+  getch();
+}
