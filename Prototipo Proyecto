@@ -53,3 +53,287 @@ void main()
 	 }while (opcion!=0);
   getch();
 }
+void cargar(float matrix[MAXROW][MAXCOL],int n, int m)
+{cout<<"Introducir elementos de matriz 3x3 a analizar"<<endl;
+int i, j;
+for(i=0;i<n;i++)
+  for(j=0;j<m;j++)
+   {cout<<"MAT ["<<i<<"] ["<<j<<"]: ";
+     cin>>matrix[i][j];
+   }
+}
+void mostrar(float matrix[MAXROW][MAXCOL],int n, int m)
+{int i, j;
+ 
+  for(i=0;i<n;i++)
+   {for(j=0;j<m;j++)
+       cout<<"MAT ["<<i+1<<"] ["<<j+1<<"]: "<<matrix[i][j]<<"\t\t";   
+	cout<<endl;
+   }
+}
+void suma( float matrix[MAXROW][MAXCOL],int n,int m)
+{
+	float matriz1[MAXROW][MAXCOL],matriz2[MAXROW][MAXCOL],matriz3[MAXROW][MAXCOL];
+	cout<<"Como sumar dos matrices de las mismas diemensiones"<<endl;
+	cargar(matriz1,n,m);
+	cargar(matriz2,n,m);
+	cout<<"Sumar matrices es bantante sencillo, el unico paso a realizar es el siguiente:"<<endl;
+	cout<<"Utilizaremos el elemento MAT[1][1]: analizando las dos matrices, sumaremos los elementos de las dos matrices que se encuentren en esa posicion"<<endl;
+	cout<<"Repetiremos el proceso con cada posicion de la matriz."<<endl;
+	matriz3[0][0]=matriz1[0][0]+matriz2[0][0];
+	matriz3[0][1]=matriz1[0][1]+matriz2[0][1];
+	matriz3[0][2]=matriz1[0][2]+matriz2[0][2];
+	matriz3[1][0]=matriz1[1][0]+matriz2[1][0];
+	matriz3[1][1]=matriz1[1][1]+matriz2[1][1];
+	matriz3[1][2]=matriz1[1][2]+matriz2[1][2];
+	matriz3[2][0]=matriz1[2][0]+matriz2[2][0];
+	matriz3[2][1]=matriz1[2][1]+matriz2[2][1];
+	matriz3[2][2]=matriz1[2][2]+matriz2[2][2];
+	cout<<"La matriz resultante de la suma de las dos matrices propuestas es la siguiente: "<<endl;
+	mostrar(matriz3,n,m);
+}
+void determinante(float matrix[MAXROW][MAXCOL], int n,int m)
+{
+	float matriz1[MAXROW][MAXCOL],det;
+	cargar(matriz1,n,m);
+	cout<<"El determinante es una operación que se realiza sobre matrices cuadradas cuyo resultado es un número real."<<endl;
+	cout<<"1)Si tenemos una matriz de cuadrada de 3x3: "<<endl;
+	mostrar(matriz1,n,m);
+	cout<<"Lo que haremos es colocarle signos a cada posicion de nuestra matriz, simulando un tablero de ajedrez."<<endl<<endl;
+	cout<<"| MAT[1][1]= + "<<"MAT[1][2]= - "<<"MAT[1][3]= + |"<<endl;
+	cout<<"| MAT[2][1]= - "<<"MAT[2][2]= + "<<"MAT[2][3]= - |"<<endl;
+	cout<<"| MAT[3][1]= + "<<"MAT[3][2]= - "<<"MAT[3][3]= + |"<<endl;
+	cout<<"2)Luego debemos elegir una fila, en este caso utilizaremos la primera"<<endl;
+	cout<<"3)Posteriormente procederemos a ocultar la fila y la columna del primer elemento de la fila que elegimos, quedando una matriz de 2x2."<<endl;
+	cout<<"Resolvemos la matriz 2x2 de la siguiente manera: el producto del primer termino de la izquierda y el segundo de la derecha le restamos el producto"<<endl;
+	cout<<"entre el segundo termino de la izquierda y el primero de la derecha"<<endl;
+	cout<<"Luego, a esta matriz 2x2 le multiplicaremos escalarmente el elemento de la matriz de la cual ocultamos su fila y columna"<<endl;
+	cout<<"con el signo que le toco en su posicion en el paso 1."<<endl;
+	cout<<"4) Repetimos el proceso con cada elemento de la fila que elegimos y sumamos los resultados"<<endl;
+	cout<<"5)La determinante de la matriz propuesta seria: "<<endl;
+	det=matriz1[0][0]*(matriz1[1][1]*matriz1[2][2]-matriz1[1][2]*matriz1[2][1])-matriz1[0][1]*(matriz1[1][0]*matriz1[2][2]-matriz1[1][2]*matriz1[2][0])+matriz1[0][2]*(matriz1[1][0]*matriz1[2][1]-matriz1[1][1]*matriz1[2][0]);
+	cout<<"det(MAT)= "<<det<<endl;
+}
+void cofactores (float matrix[MAXROW][MAXCOL],int n,int m)
+{
+	float matriz1[MAXROW][MAXCOL], matriz2[MAXROW][MAXCOL];
+	cargar(matriz1,n,m);
+	matriz2[0][0]=(matriz1[1][1]*matriz1[2][2])-(matriz1[1][2]*matriz1[2][1]);
+	matriz2[0][1]=((matriz1[1][0]*matriz1[2][2])-(matriz1[1][2]*matriz1[2][0]))*(-1);
+	matriz2[0][2]=(matriz1[1][0]*matriz1[2][1])-(matriz1[1][1]*matriz1[2][0]);
+	matriz2[1][0]=((matriz1[0][1]*matriz1[2][2])-(matriz1[0][2]*matriz1[2][1]))*(-1);
+	matriz2[1][1]=(matriz1[0][0]*matriz1[2][2])-(matriz1[0][2]*matriz1[2][0]);
+	matriz2[1][2]=((matriz1[0][0]*matriz1[2][1])-(matriz1[0][1]*matriz1[2][0]))*(-1);
+	matriz2[2][0]=(matriz1[0][1]*matriz1[1][2])-(matriz1[0][2]*matriz1[1][1]);
+	matriz2[2][1]=((matriz1[0][0]*matriz1[1][2])-(matriz1[0][2]*matriz1[1][0]))*(-1);
+	matriz2[2][2]=(matriz1[0][0]*matriz1[1][1])-(matriz1[0][1]*matriz1[1][0]);
+	cout<<"Pasos para resolver una matriz de cofactores"<<endl<<endl;
+	cout<<"1) Si por ejemplo tenemos una matriz de 3x3 (esto quiere decir que tiene el mismo numero de filas que columnas)."<<endl;
+	mostrar(matriz1,n,m);
+	cout<<"2) Lo que haremos es colocarle signos a cada posicion de nuestra matriz, simulando un tablero de ajedrez."<<endl<<endl;
+	cout<<"| MAT[1][1]= + "<<"MAT[1][2]= - "<<"MAT[1][3]= + |"<<endl;
+	cout<<"| MAT[2][1]= - "<<"MAT[2][2]= + "<<"MAT[2][3]= - |"<<endl;
+	cout<<"| MAT[3][1]= + "<<"MAT[3][2]= - "<<"MAT[3][3]= + |"<<endl;
+	cout<<"3) Posteriormente pasaremos a ocultar la primera fila junto con la primera columna, quedando asi una matriz de 2x2."<<endl;
+	cout<<"Esta matriz se multiplicara por el signo dado en la posicion del elemento de la matriz de la cual estamos ocultando su fila y columna."<<endl;
+	cout<<"Si hablamos, por ejemplo de MAT[1][1], nos quedaria la siguiente matriz 2x2: "<<endl;
+	cout<<"| MAT[2][2] "<<"MAT[2][3] |"<<endl;
+	cout<<"| MAT[3][2] "<<"MAT[3][3] |"<<endl;
+	cout<<"Y luego reemplazariamos en MAT[1][1] lo que nos salga de la siguiente operacion: "<<endl;
+	cout<<"MAT[2][2]xMAT[3][3]-MAT[2][3]xMAT[3][2]"<<endl;
+	cout<<"Lo que hicimos fue cruzar el primer termino de la izquierda por el segundo inferior de la derecha,"<<endl; 
+	cout<<"menos el superior de la derecha por el inferior de la izquierda."<<endl;
+	cout<<"4)Ahora haremos lo mismo con cada elemento de la matriz, reemplazando el resultado de la operacion de la matriz 2x2."<<endl<<endl;
+	cout<<"5)Por ultimo se resuelven operaciones."<<endl<<endl;
+	cout<<"6)La resultante de la matriz propuesta incialmente seria: "<<endl<<endl;
+	mostrar(matriz2,n,m);
+}
+void adjunta (float matrix[MAXROW][MAXCOL],int n,int m)
+{
+	float matriz1[MAXROW][MAXCOL],matriz2[MAXROW][MAXCOL],matriz3[MAXROW][MAXCOL];
+	cargar(matriz1,n,m);
+	cout<<"Pasos para hallar la adjunta de una matriz"<<endl<<endl;
+	cout<<"1)Si por ejemplo tenemos una matriz 3x3 (esto quiere decir que tiene el mismo numero de filas y columnas)."<<endl;
+	mostrar(matriz1,n,m);
+	cout<<"2)Lo que haremos es encontrar los cofactores de la matriz propuesta, dando como resultado la siguiente matriz:"<<endl;
+	matriz2[0][0]=(matriz1[1][1]*matriz1[2][2])-(matriz1[1][2]*matriz1[2][1]);
+	matriz2[0][1]=((matriz1[1][0]*matriz1[2][2])-(matriz1[1][2]*matriz1[2][0]))*(-1);
+	matriz2[0][2]=(matriz1[1][0]*matriz1[2][1])-(matriz1[1][1]*matriz1[2][0]);
+	matriz2[1][0]=((matriz1[0][1]*matriz1[2][2])-(matriz1[0][2]*matriz1[2][1]))*(-1);
+	matriz2[1][1]=(matriz1[0][0]*matriz1[2][2])-(matriz1[0][2]*matriz1[2][0]);
+	matriz2[1][2]=((matriz1[0][0]*matriz1[2][1])-(matriz1[0][1]*matriz1[2][0]))*(-1);
+	matriz2[2][0]=(matriz1[0][1]*matriz1[1][2])-(matriz1[0][2]*matriz1[1][1]);
+	matriz2[2][1]=((matriz1[0][0]*matriz1[1][2])-(matriz1[0][2]*matriz1[1][0]))*(-1);
+	matriz2[2][2]=(matriz1[0][0]*matriz1[1][1])-(matriz1[0][1]*matriz1[1][0]);
+	mostrar(matriz2,n,m);
+	cout<<"3)Lo unico que queda por hacer luego de hallar los cofactores es hallar la transpuesta de la matriz dada."<<endl;
+	cout<<"Como podemos deducir, hallar la adjunta de una matriz consiste en encontrar la transpuesta de sus cofactores."<<endl;
+	matriz3[0][0]=matriz2[0][0];
+	matriz3[0][1]=matriz2[1][0];
+	matriz3[0][2]=matriz2[2][0];
+	matriz3[1][0]=matriz2[0][1];
+	matriz3[1][1]=matriz2[1][1];
+	matriz3[1][2]=matriz2[2][1];
+	matriz3[2][0]=matriz2[0][2];
+	matriz3[2][1]=matriz2[1][2];
+	matriz3[2][2]=matriz2[2][2];
+	cout<<"4)La adjunta de la matriz propuesta inicialmente seria la siguiente"<<endl;
+	mostrar(matriz3,n,m);
+}
+void inversa(float matrix[MAXROW][MAXCOL], int n,int m)
+{
+	float matriz1[MAXROW][MAXCOL],matriz2[MAXROW][MAXCOL],matriz3[MAXROW][MAXCOL],matriz4[MAXROW][MAXCOL],matriz5[MAXROW][MAXCOL],det;
+	cargar(matriz1,n,m);
+	cout<<"Pasos para hallar la adjunta de una matriz"<<endl<<endl;
+	cout<<"1)Si por ejemplo tenemos una matriz 3x3 (esto quiere decir que tiene el mismo numero de filas y columnas)."<<endl;
+	mostrar(matriz1,n,m);
+	det=matriz1[0][0]*(matriz1[1][1]*matriz1[2][2]-matriz1[1][2]*matriz1[2][1])-matriz1[0][1]*(matriz1[1][0]*matriz1[2][2]-matriz1[1][2]*matriz1[2][0])+matriz1[0][2]*(matriz1[1][0]*matriz1[2][1]-matriz1[1][1]*matriz1[2][0]);
+	cout<<"2)El primer paso es hallar la determinante de la matriz dada, la cual seria:"<<endl;
+	cout<<"det(MAT)="<<det<<endl<<endl;
+	cout<<"3)Ahora lo que haremos es encontrar la adjunta de la matriz propuesta, dando como resultado la siguiente matriz:"<<endl;
+	matriz2[0][0]=(matriz1[1][1]*matriz1[2][2])-(matriz1[1][2]*matriz1[2][1]);
+	matriz2[0][1]=((matriz1[1][0]*matriz1[2][2])-(matriz1[1][2]*matriz1[2][0]))*(-1);
+	matriz2[0][2]=(matriz1[1][0]*matriz1[2][1])-(matriz1[1][1]*matriz1[2][0]);
+	matriz2[1][0]=((matriz1[0][1]*matriz1[2][2])-(matriz1[0][2]*matriz1[2][1]))*(-1);
+	matriz2[1][1]=(matriz1[0][0]*matriz1[2][2])-(matriz1[0][2]*matriz1[2][0]);
+	matriz2[1][2]=((matriz1[0][0]*matriz1[2][1])-(matriz1[0][1]*matriz1[2][0]))*(-1);
+	matriz2[2][0]=(matriz1[0][1]*matriz1[1][2])-(matriz1[0][2]*matriz1[1][1]);
+	matriz2[2][1]=((matriz1[0][0]*matriz1[1][2])-(matriz1[0][2]*matriz1[1][0]))*(-1);
+	matriz2[2][2]=(matriz1[0][0]*matriz1[1][1])-(matriz1[0][1]*matriz1[1][0]);
+	matriz3[0][0]=matriz2[0][0];
+	matriz3[0][1]=matriz2[1][0];
+	matriz3[0][2]=matriz2[2][0];
+	matriz3[1][0]=matriz2[0][1];
+	matriz3[1][1]=matriz2[1][1];
+	matriz3[1][2]=matriz2[2][1];
+	matriz3[2][0]=matriz2[0][2];
+	matriz3[2][1]=matriz2[1][2];
+	matriz3[2][2]=matriz2[2][2];
+	mostrar(matriz3,n,m);
+	cout<<"4)Ahora el paso final consiste en multiplicar la determinante con exponente ´-1´ (1/det) con la adjunta de la matriz."<<endl;
+	if (det==0)
+		{cout<<"----------ERROR----------"<<endl;
+		cout<<"En este caso, la determinante de la matriz propuesta es igual a cero, y no es posible sacar la inversa de una matriz"<<endl;
+		cout<<"cuya determinante es igual a cero, ya que no existe la division de ningun numero entre cero( como ser ´1/0´)."<<endl;}
+	else
+		{matriz4[0][0]=(1.0/det)*(matriz3[0][0]);
+		matriz4[0][1]=(1.0/det)*(matriz3[0][1]);
+		matriz4[0][2]=(1.0/det)*(matriz3[0][2]);
+		matriz4[1][0]=(1.0/det)*(matriz3[1][0]);
+		matriz4[1][1]=(1.0/det)*(matriz3[1][1]);
+		matriz4[1][2]=(1.0/det)*(matriz3[1][2]);
+		matriz4[2][0]=(1.0/det)*(matriz3[2][0]);
+		matriz4[2][1]=(1.0/det)*(matriz3[2][1]);
+		matriz4[2][2]=(1.0/det)*(matriz3[2][2]);
+		cout<<"La inversa de la matriz propuesta seria la siguiente: "<<endl;
+		mostrar(matriz4,n,m);
+		cout<<"5)Una manera eficaz de demostrar que nuestra inversa de la matriz es correcta, es comprobando la siguiente regla: "<<endl;
+		cout<<"MAT x MAT^(-1)= |1	0	0|"<<endl;
+		cout<<"----------------|0	1	0|"<<endl;
+		cout<<"----------------|0	0	1|"<<endl;
+		cout<<"La regla dice que la multiplicacion matricial de una matriz con su inversa, da como resultado la matriz identidad."<<endl;
+		cout<<"La prueba de la matriz propuesta seria la siguiente:"<<endl;
+		cout<<"--------------------MATRIZ ORIGINAL--------------------"<<endl;
+		mostrar(matriz1,n,m);
+		cout<<"--------------------INVERSA DE LA MATRIZ--------------------"<<endl;
+		mostrar(matriz4,n,m);
+		cout<<"--------------------RESULTADO DE LA MULTIPLICACION(MATRIZ IDENTIDAD)--------------------"<<endl;
+		matriz5[0][0]=(matriz1[0][0])*(matriz4[0][0])+(matriz1[0][1])*(matriz4[1][0])+(matriz1[0][2])*(matriz4[2][0]);
+		matriz5[0][1]=(matriz1[0][0])*(matriz4[0][1])+(matriz1[0][1])*(matriz4[1][1])+(matriz1[0][2])*(matriz4[2][1]);
+		matriz5[0][2]=(matriz1[0][0])*(matriz4[0][2])+(matriz1[0][1])*(matriz4[1][2])+(matriz1[0][2])*(matriz4[2][2]);
+		matriz5[1][0]=(matriz1[1][0])*(matriz4[0][0])+(matriz1[1][1])*(matriz4[1][0])+(matriz1[1][2])*(matriz4[2][0]);
+		matriz5[1][1]=(matriz1[1][0])*(matriz4[0][1])+(matriz1[1][1])*(matriz4[1][1])+(matriz1[1][2])*(matriz4[2][1]);
+		matriz5[1][2]=(matriz1[1][0])*(matriz4[0][2])+(matriz1[1][1])*(matriz4[1][2])+(matriz1[1][2])*(matriz4[2][2]);
+		matriz5[2][0]=(matriz1[2][0])*(matriz4[0][0])+(matriz1[2][1])*(matriz4[1][0])+(matriz1[2][2])*(matriz4[2][0]);
+		matriz5[2][1]=(matriz1[2][0])*(matriz4[0][1])+(matriz1[2][1])*(matriz4[1][1])+(matriz1[2][2])*(matriz4[2][1]);
+		matriz5[2][2]=(matriz1[2][0])*(matriz4[0][2])+(matriz1[2][1])*(matriz4[1][2])+(matriz1[2][2])*(matriz4[2][2]);
+		mostrar(matriz5,n,m);
+		}
+}
+void transpuesta (float matrix[MAXROW][MAXCOL], int n, int m)
+{
+	float matriz1[MAXROW][MAXCOL],matriz2[MAXROW][MAXCOL];;
+	cout<<"\nMatriz Transpuesta\n";
+	cargar(matriz1,n,m);
+	cout<<"1)Si tenemos una matriz cuadrada de 3x3:"<<endl;
+	mostrar(matriz1,n,m);
+	cout<<"Lo unico que hay que hacer para hallar su transpuesta es colocar su 1ra filas como si fuera su 1ra columna,"<<endl;
+	cout<<"y asi con todas sus filas"<<endl;
+	matriz2[0][0]=matriz1[0][0];
+	matriz2[0][1]=matriz1[1][0];
+	matriz2[0][2]=matriz1[2][0];
+	matriz2[1][0]=matriz1[0][1];
+	matriz2[1][1]=matriz1[1][1];
+	matriz2[1][2]=matriz1[2][1];
+	matriz2[2][0]=matriz1[0][2];
+	matriz2[2][1]=matriz1[1][2];
+	matriz2[2][2]=matriz1[2][2];
+	mostrar(matriz2,n,m);
+}
+void resta (float matrix[MAXROW][MAXCOL],int n,int m)
+{int r,c;
+ float mat1[MAXROW][MAXCOL],mat2[MAXROW][MAXCOL],matR[MAXROW][MAXCOL];
+cout<<"Para este ejercicio hay que introducir dos matrices que tengan la misma dimension (el mismo numero de filas que de columnas) \n";
+cout<<"introduce el numero de filas\n";
+cin>>r;
+cout<<"introduce el numero de columnas\n";
+cin>>c;
+cout<<"Ahora introduce la primera matriz\n";
+for(int i=0;i<r;i++)
+	{
+	for (int j=0;j<c;j++)
+		{cout<<"introduce el valor ["<<i+1<<"]"<<"["<<j+1<<"]\n";
+		cin>>mat1[i][j];
+		}
+	}
+cout<<"Ahora introduce la segunda matriz\n";
+for(int k=0;k<r;k++)
+	{
+	for (int l=0;l<c;l++)
+		{cout<<"introduce el valor ["<<k+1<<"]"<<"["<<l+1<<"]\n";
+		cin>>mat2[k][l];
+		}
+	}
+for(int m=0;m<r;m++)
+	{
+	for (int n=0;n<c;n++)
+		{cout<<"Para conseguir el valor ["<<m+1<<"]"<<"["<<n+1<<"]  de la matriz resultante restas el ["<<m+1<<"]"<<"["<<n+1<<"]  valor de la primera matriz menos el valor ["<<m+1<<"]"<<"["<<n+1<<"]  de la segunda matriz\n";
+		matR[m][n]=mat1[m][n]-mat2[m][n]; 
+		cout<<"Entonces el valor ["<<m+1<<"]"<<"["<<n+1<<"]  de la matriz resultante es:"<<matR[m][n]<<"\n";
+		}
+	}
+cout<<"Y la matriz resultante seria: "<<endl;
+mostrar(matR,m,n);
+}
+void mul(float matrix[MAXROW][MAXCOL], int n,int m)
+{
+	float matriz1[MAXROW][MAXCOL],matriz4[MAXROW][MAXCOL],matriz5[MAXROW][MAXCOL];
+	cout<<"Pasos para realizar multiplicacion de matrices"<<endl<<endl;
+	cargar(matriz1,n,m);
+	cargar(matriz4,n,m);
+	cout<<"Dadas dos matrices A y B de dimensiones m × n y n × p, respectivamente, se define su producto A⋅B como la matriz de dimensión m×p tal que el elemento de la posición fila i"<<endl; 
+	cout<<"y columna j es el resultado del producto de los vectores fila i de A y columna j de B."<<endl;
+	cout<<"-----IMPORTANTE-----"<<endl;
+	cout<<"Antes de multiplicar matrices, primero hay que tener en cuenta unas reglas:"<<endl;
+	cout<<"-Para poder efectuar el producto de matrices A⋅B, el número de columnas de A y el número de filas de B tiene que ser el mismo."<<endl;
+	cout<<"-El producto de matrices no es necesariamente conmutativo, es decir, no siempre se cumple A⋅B=B⋅A."<<endl;
+	cout<<"-El producto de matrices es asociativo y distributivo"<<endl;
+	cout<<"-El producto tiene elemento neutro, In, que es la identidad de dimensión que corresponda y es el elemento neutro por derecha e izquierda"<<endl; 
+	cout<<"(si la matriz es cuadrada, si no, el neutro por derecha e izquierda tiene distinta dimensión)."<<endl;
+	cout<<"Teniendo en cuenta estas reglas, lo que sigue es aprender el proceso de la multiplicacion de matrices:"<<endl;
+	cout<<"1)Lo primero es empezar por elegir un elemento de la matriz resultante, en este caso utilizaremos MAT[1][1]."<<endl;
+	cout<<"2)Para encontrar este elemento, lo que tenemos que hacer es multiplicar la fila del elemento elegido(utilizando los valores de la primera matriz en esa posicion)"<<endl;
+	cout<<"por la columna del elemento elegido(utilizando los valores de la segunda matriz)"<<endl; 
+	cout<<"3)Repetimos el proceso para cada elemento de la matriz resultante"<<endl;
+	cout<<"4)La matriz resultante de la multiplicacion de las matrices propuestas es:"<<endl;
+	matriz5[0][0]=(matriz1[0][0])*(matriz4[0][0])+(matriz1[0][1])*(matriz4[1][0])+(matriz1[0][2])*(matriz4[2][0]);
+	matriz5[0][1]=(matriz1[0][0])*(matriz4[0][1])+(matriz1[0][1])*(matriz4[1][1])+(matriz1[0][2])*(matriz4[2][1]);
+	matriz5[0][2]=(matriz1[0][0])*(matriz4[0][2])+(matriz1[0][1])*(matriz4[1][2])+(matriz1[0][2])*(matriz4[2][2]);
+	matriz5[1][0]=(matriz1[1][0])*(matriz4[0][0])+(matriz1[1][1])*(matriz4[1][0])+(matriz1[1][2])*(matriz4[2][0]);
+	matriz5[1][1]=(matriz1[1][0])*(matriz4[0][1])+(matriz1[1][1])*(matriz4[1][1])+(matriz1[1][2])*(matriz4[2][1]);
+	matriz5[1][2]=(matriz1[1][0])*(matriz4[0][2])+(matriz1[1][1])*(matriz4[1][2])+(matriz1[1][2])*(matriz4[2][2]);
+	matriz5[2][0]=(matriz1[2][0])*(matriz4[0][0])+(matriz1[2][1])*(matriz4[1][0])+(matriz1[2][2])*(matriz4[2][0]);
+	matriz5[2][1]=(matriz1[2][0])*(matriz4[0][1])+(matriz1[2][1])*(matriz4[1][1])+(matriz1[2][2])*(matriz4[2][1]);
+	matriz5[2][2]=(matriz1[2][0])*(matriz4[0][2])+(matriz1[2][1])*(matriz4[1][2])+(matriz1[2][2])*(matriz4[2][2]);
+	mostrar(matriz5,n,m);
+}
