@@ -304,7 +304,10 @@ for(int m=0;m<r;m++)
 		}
 	}
 cout<<"Y la matriz resultante seria: "<<endl;
-mostrar(matR,m,n);
+for(int i=0;i<r;i++){
+	for(int j=0;j<c;j++)
+		cout<<"MAT["<<i+1<<"]["<<j+1<<"]: "<<matR[i][j]<<"\t";}
+cout<<endl;
 }
 void mul(float matrix[MAXROW][MAXCOL], int n,int m)
 {
